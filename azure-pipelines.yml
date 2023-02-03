@@ -5,19 +5,22 @@
 
 trigger:
 - main
-- task: 'test'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    deploymentScope: 'Subscription'
+    deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'sandbox-cg-uksouth-002(071ae0e3-ba70-41f1-ae9a-cfdd16b2d387)'
     subscriptionId: '071ae0e3-ba70-41f1-ae9a-cfdd16b2d387'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'DevOpsVMTest'
     location: 'UK South'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/cloudguardai/VMDevOpsTest/main/VMDeployARM.json'
     deploymentMode: 'Incremental'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
