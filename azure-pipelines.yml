@@ -5,9 +5,15 @@
 
 trigger:
 - main
-
-pool:
-  vmImage: ubuntu-latest
+- task: 'AzureResourceManagerTemplateDeployment'
+  inputs:
+    deploymentScope: 'Subscription'
+    azureResourceManagerConnection: 'sandbox-cg-uksouth-002(071ae0e3-ba70-41f1-ae9a-cfdd16b2d387)'
+    subscriptionId: '071ae0e3-ba70-41f1-ae9a-cfdd16b2d387'
+    location: 'UK South'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/cloudguardai/VMDevOpsTest/main/VMDeployARM.json'
+    deploymentMode: 'Incremental'
 
 steps:
 - script: echo Hello, world!
