@@ -5,7 +5,7 @@
 
 trigger:
 - main
-- task: 'AzureResourceManagerTemplateDeployment'
+- task: 'test'
   inputs:
     deploymentScope: 'Subscription'
     azureResourceManagerConnection: 'sandbox-cg-uksouth-002(071ae0e3-ba70-41f1-ae9a-cfdd16b2d387)'
