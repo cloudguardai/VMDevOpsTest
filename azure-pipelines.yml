@@ -13,6 +13,17 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'sandbox-cg-uksouth-002(071ae0e3-ba70-41f1-ae9a-cfdd16b2d387)'
+    subscriptionId: '071ae0e3-ba70-41f1-ae9a-cfdd16b2d387'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'DevOpsTest'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: 'https://raw.githubusercontent.com/cloudguardai/VMDevOpsTest/main/VMDeployARM.json'
+    deploymentMode: 'Incremental'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
